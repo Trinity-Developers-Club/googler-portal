@@ -8,6 +8,7 @@ body {
   background: #fff;
   font-family: "Lato";
   color: white;
+  overflow: hidden;
 }
 #particles-js {
   position: relative;
@@ -64,4 +65,10 @@ body {
   background-color: #ef394c;
   font-size: 25px;
   color: #fafafa;
+}
+
+@media (max-width: 998px) {
+  .container {
+    width: 350px;
+  }
 }
