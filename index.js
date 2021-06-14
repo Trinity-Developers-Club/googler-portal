@@ -116,7 +116,7 @@ app.post('/addQuestion', (req, res) => {
 
 app.post('/checkAnswer', checkEventTime, checkAuthenticated, (req, res) => {
     if (req.body.answer.length == 0) {
-        req.flash('wrongAnswer', 'Do you really think, answer is Empty String?')
+        req.flash('error', 'No-uh Answer is not empty string.')
         return res.redirect('/eventPage')
     }
     // First we find the team
@@ -125,13 +125,13 @@ app.post('/checkAnswer', checkEventTime, checkAuthenticated, (req, res) => {
         // We find the currentQuestion of user
         questionCollection.findOne({ questionNumber: team.currentQuestion }).then(question => {
             if (!question) {
-                req.flash('bigMessage', 'Kuddos!! You have answered all the questions. Go enjoy the weekend with some Netflix or better get Coding!')
+                req.flash('bigMessage', 'Kuddos!! You have answered all the questions. Go enjoy with some Netflix or better get Coding!')
                 return res.redirect('/message')
             }
 
             const verifiedFlag = bcrypt.compareSync(req.body.answer, question.answer)
             if (!verifiedFlag) {
-                req.flash('wrongAnswer', 'Uhm! Wrong Answer... Try Again')
+                req.flash('error', 'Uhm! Wrong Answer... Try Again')
                 return res.redirect('/eventPage')
             }
             team.score = team.score + 10;
@@ -139,7 +139,7 @@ app.post('/checkAnswer', checkEventTime, checkAuthenticated, (req, res) => {
             team.save((err, team) => {
                 if (err) return res.send('SOME SPECIAL ERROR WHILE SAVING')
                 if (team) {
-                    req.flash('rightAnswer', 'One Step Closer! Move ahead.')
+                    req.flash('success', 'Awesome! Right Answer.')
                     return res.redirect('/eventPage')
                 }
             })

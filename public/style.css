@@ -1,0 +1,32 @@
+.text-center {
+  text-align: center;
+}
+.errorMessage,
+.successMessage {
+  background-color: red;
+  color: white;
+  text-align: center;
+  padding: 5px 20px;
+  margin: 5px 0px;
+  border-radius: 5px;
+}
+
+.successMessage {
+  background-color: #4bb543;
+}
+
+.question {
+  color: white;
+  background-color: #ef414c;
+  padding: 10px 10px;
+  margin: 10px 0px;
+  font-size: 20px;
+}
+
+.text-accent {
+  font-weight: bold;
+  background-color: #ef414c;
+  color: white;
+  padding: 0px 7px;
+  border-radius: 5px;
+}

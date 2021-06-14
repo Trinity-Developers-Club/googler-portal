@@ -1,27 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cryptohunt 2.0</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Googler: Trinity Cyber Forum</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="login.css" />
+    <style>
+        .btn {
+            background-color: #ef414c;
+            /* Green */
+            border: 2px solid #ef414c;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 45px;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: #ef414c;
+            transition: 0.3s;
+        }
+    </style>
 </head>
-<body class="bg-black text-center text-white">
-    
-    <div class="container d-flex flex-column justify-content-center align-items-center" style="height: 100vh;">
-        <img src="trinity.png" class="m-3" height="100px" width="100px" alt="" srcset="">
-        <h1>TRINITY CYBER FORUM</h1>
-        <h2 class="text-warning">CRYPTOHUNT 2.0</h2>
-        <% if(messages.bigMessage) { %>
-            <%= messages.bigMessage %> 
-        <% } %>
-        <div class="text-info mt-3">Follow us on Instagram - <a target="_blank" href="https://www.instagram.com/ipecTrinity">@ipecTrinity</a></div>
-        <div class="text-info">Follow us on Linkedin - <a target="_blank" href="https://www.linkedin.com/company/14576675/admin/">@ipecTrinity</a></div>
-        <div class="text-info">Follow us on Twitter - <a target="_blank" href="https://twitter.com/ipectrinity">@ipecTrinity</a></div>
+
+<body>
+    <img id="logo" src="trinity.png" height="60px" alt="" srcset="">
+    <div class="container text-center">
+        <div class="text-center">
+            <img src="trinity.png" height="100px" alt="">
+        </div>
+
+        <h1>Trinity Cyber Forum</h1>
+        <h3>Googler</h3>
+        <h2>
+            <% if (messages.bigMessage) { %>
+                <div class="">
+                    <%= messages.bigMessage %>
+                </div>
+                <% } %>
+        </h2>
+        <br>
+        <a href="http://instagram.com/ipectrinity" target="_blank"><button class="btn">Follow Trinity</button></a>
     </div>
+    <div id="particles-js"></div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="particles.js"></script>
+
 </body>
+
 </html>

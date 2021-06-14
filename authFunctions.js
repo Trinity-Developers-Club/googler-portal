@@ -6,26 +6,29 @@ function checkAuthenticated(req, res, next) {
 }
 
 function checkUnAuthenticated(req, res, next) {
-    if (! req.isAuthenticated()) {
+    if (!req.isAuthenticated()) {
         next()
     } else {
         res.redirect("/eventPage")
     }
 }
 
-function checkEventTime(req,res,next) {
-    var eventFlag = process.env.EVENT_FLAG
-    if(eventFlag == 'BEFORE'){
-        req.flash('bigMessage', 'Oh Boy! You are Excited. But We are sorry. Event will start on 12th November 2020 (00:00 Hours / 12:00 AM) ')
+function checkEventTime(req, res, next) {
+    let startTime = new Date(Date.parse('17 June 2021 19:00'))
+    let closeTime = new Date(Date.parse('17 June 2021 19:30'))
+    console.log(startTime)
+    let currentDate = new Date();
+    if (currentDate < startTime) {
+        req.flash('bigMessage', 'You seem Excited, but We\'re sorry event will start on 17th June 2021 at 19:00 Hours.')
         return res.redirect('/message')
     }
-    if(eventFlag == 'ONTIME'){
+    else if (currentDate > closeTime) {
+        req.flash('bigMessage', 'Event is over. We hope you participated and enjoyed.')
+        return res.redirect('/message')
+    }
+    else if (currentDate >= startTime && currentDate <= closeTime) {
         next()
-    }
-    if(eventFlag == 'AFTER'){
-        req.flash('bigMessage', 'Oh Shoot! The event is over. Playtime is over. Hope you participated and Enjoyed. Follow us for results.')
-        return res.redirect('/message')
     }
 }
 
-module.exports = {checkAuthenticated : checkAuthenticated , checkUnAuthenticated : checkUnAuthenticated, checkEventTime}
+module.exports = { checkAuthenticated: checkAuthenticated, checkUnAuthenticated: checkUnAuthenticated, checkEventTime }
