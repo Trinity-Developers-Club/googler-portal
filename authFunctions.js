@@ -19,7 +19,7 @@ function checkEventTime(req, res, next) {
     console.log(startTime)
     let currentDate = new Date();
     if (currentDate < startTime) {
-        req.flash('bigMessage', 'You seem Excited, but We\'re sorry event will start on 17th June 2021 at 19:00 Hours.')
+        req.flash('bigMessage', 'Are you excited for the event? \n Come back again on 17th June, 19:00 hours, when the event will start.')
         return res.redirect('/message')
     }
     else if (currentDate > closeTime) {
