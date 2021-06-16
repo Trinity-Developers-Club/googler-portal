@@ -31,6 +31,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 })
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json())
 app.use(ddos.express)
 app.set('view engine', 'ejs')
 app.use(express.static(__dirname + '/public'))
