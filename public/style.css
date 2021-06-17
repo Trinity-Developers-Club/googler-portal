@@ -17,6 +17,7 @@
 
 .question {
   color: white;
+  white-space: pre-wrap;
   background-color: #ef414c;
   padding: 10px 10px;
   margin: 10px 0px;
