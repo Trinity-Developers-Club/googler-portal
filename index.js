@@ -30,9 +30,9 @@ mongoose.connect(process.env.MONGODB_URI, {
         console.log("Connected to MongoDB");
 
 })
-// app.use(express.urlencoded({ extended: false }));
-app.use(express.json())
-// app.use(ddos.express)
+app.use(express.urlencoded({ extended: false }));
+// app.use(express.json())
+app.use(ddos.express)
 app.set('view engine', 'ejs')
 app.use(express.static(__dirname + '/public'))
 
@@ -92,6 +92,9 @@ app.get('/eventPage', checkEventTime, checkAuthenticated, (req, res) => {
                 req.flash('bigMessage', 'Kuddos!! You have answered all the questions. Go enjoy the weekend with some Netflix or better, "GET CODING"')
                 return res.redirect('/message')
             }
+            if (Math.floor(Math.random() * 10) >= 8) {
+                req.flash('display', 'true')
+            }
             res.render('eventPage.ejs', { team, question })
         })
     })
@@ -116,6 +119,7 @@ app.post('/addQuestion', (req, res) => {
 })
 
 app.post('/checkAnswer', checkEventTime, checkAuthenticated, (req, res) => {
+    let submissionTime = new Date();
     if (req.body.answer.length == 0) {
         req.flash('error', 'No-uh Answer is not empty string.')
         return res.redirect('/eventPage')
@@ -137,6 +141,7 @@ app.post('/checkAnswer', checkEventTime, checkAuthenticated, (req, res) => {
             }
             team.score = team.score + 10;
             team.currentQuestion++;
+            team.lastAnswered = `${submissionTime.getHours()} : ${submissionTime.getMinutes()} : ${submissionTime.getSeconds()} `;
             team.save((err, team) => {
                 if (err) return res.send('SOME SPECIAL ERROR WHILE SAVING')
                 if (team) {

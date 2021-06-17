@@ -19,6 +19,10 @@ const teamSchema = new schema({
         type: Number,
         required: true,
         default: 0
+    },
+    lastAnswered: {
+        type: String,
+        required: false,
     }
 
 });

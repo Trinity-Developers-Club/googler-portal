@@ -51,11 +51,29 @@
                             <button>Submit</button>
                         </form>
     </div>
-    <div id="particles-js"></div>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="particles.js"></script>
+    <% if(messages.display){ %>
+        <div id="event" class="modal-window">
+            <div>
+                <a href="#" title="Close" class="modal-close">Close</a>
+                <h1>Hello!</h1>
+                <div>Are you enjoying this event? Share your joy with a screenshot on Instagram. tag '@ipectrinity'
+                </div>
+                <a href="http://instagram.com/ipectrinity" target="_blank">
+                    <button class="btn btn-link">Follow Trinity
+                    </button>
+                </a>
+            </div>
+        </div>
+        <% } %>
+            <a id="popUp" href="#event" style="display: none;"></a>
+            <div id="particles-js"></div>
 
+            <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+            <script src="particles.js"></script>
+            <script>
+                document.getElementById('popUp').click()
+            </script>
 </body>
 
 </html>
