@@ -14,9 +14,8 @@ function checkUnAuthenticated(req, res, next) {
 }
 
 function checkEventTime(req, res, next) {
-    next();
-    let startTime = new Date(Date.parse('20 November 2021 12:30'))
-    let closeTime = new Date(Date.parse('20 November 2021 01:00'))
+    let startTime = new Date(Date.parse('20 November 2021 06:30'))
+    let closeTime = new Date(Date.parse('20 November 2021 07:00'))
     console.log(startTime)
     let currentDate = new Date();
     if (currentDate < startTime) {
