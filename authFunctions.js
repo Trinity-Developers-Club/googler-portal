@@ -14,12 +14,13 @@ function checkUnAuthenticated(req, res, next) {
 }
 
 function checkEventTime(req, res, next) {
-    let startTime = new Date(Date.parse('20 November 2021 12:00'))
-    let closeTime = new Date(Date.parse('20 November 2021 12:30'))
+    next();
+    let startTime = new Date(Date.parse('20 November 2021 06:30'))
+    let closeTime = new Date(Date.parse('20 November 2021 07:00'))
     console.log(startTime)
     let currentDate = new Date();
     if (currentDate < startTime) {
-        req.flash('bigMessage', 'Are you excited for the event? \n Come back again on 17th June, 19:00 hours, when the event will start.')
+        req.flash('bigMessage', 'Are you excited for the event? \n Come back again on 20th November, 18:00 hours, when the event will start.')
         return res.redirect('/message')
     }
     else if (currentDate > closeTime) {
